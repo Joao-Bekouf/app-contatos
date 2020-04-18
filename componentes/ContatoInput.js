@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
-import { View, TextInput, StyleSheet, Button } from 'react-native'
-
-
+import { View, StyleSheet, TextInput, Button } from 'react-native'
+import Cores from '../cores/cores'
 
 const ContatoInput = (props) => {
-    const [contato, setContato] = useState({ nome: '', telefone: '' })
+    const [contato, setContato] = useState({ nome: "", telefone: "" })
+
     const capturarNome = (nome) => {
         let nomeContato = nome
         let telefoneContato = contato.telefone
         setContato({
             nome: nomeContato,
-            telefone: telefoneContato
+            telefone: telefoneContato,
         })
     }
 
@@ -19,7 +19,7 @@ const ContatoInput = (props) => {
         let telefoneContato = telefone
         setContato({
             nome: nomeContato,
-            telefone: telefoneContato
+            telefone: telefoneContato,
         })
     }
 
@@ -27,42 +27,40 @@ const ContatoInput = (props) => {
         <View style={styles.contatoView}>
             <View style={styles.contatoInput}>
                 <TextInput
-                    placeholder={'Nome:'}
+                    placeholder={'Nome'}
                     onChangeText={capturarNome}
                     value={contato.nome}
                 />
                 <TextInput
-                    placeholder={'Telefone:'}
+                    placeholder={'Telefone'}
                     onChangeText={capturarTelefone}
                     value={contato.telefone}
                 />
             </View>
             <Button
-                title='+'
+                title="+"
                 onPress={() => props.onAdicionarContato(contato)}
             />
         </View>
     )
 }
-
-const styles = StyleSheet.create({
-
-    contatoView: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        padding: 15,
-        marginBottom: 20,
-        borderWidth: 1,
-        borderColor: 'darkblue',
-        borderRadius: 5
-    },
-    contatoInput: {
-        width: '80%',
-        flexDirection: 'column',
-        paddingRight: 2,
-        paddingLeft: 2,
+    const styles = StyleSheet.create({
+        contatoView: {
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          borderColor: Cores.borderTwo,
+          borderWidth: 1,
+          padding: 15,
+          marginBottom: 20,
+        },
+        contatoInput: {
+          width: '80%',
+          flexDirection: 'column',
+          paddingRight: 2,
+          paddingLeft: 2,
+        },
     }
-})
+)
 
-export default ContatoInput;
+export default ContatoInput
